@@ -1,0 +1,11 @@
+{
+  "name": "publication-figures",
+  "description": "Generate publication-quality scientific figures with matplotlib. Supports scatter, line, bar, dual-axis, log-scale plots with error bars, colorbars, insets. Includes 6 colorblind-safe color palettes. Optional SEM image processing module for microscopy figures.",
+  "version": "1.0.0",
+  "author": {
+    "name": "BrendenSkills",
+    "email": "brendenferland@gmail.com"
+  },
+  "commands": "./commands/",
+  "keywords": ["scientific", "figures", "matplotlib", "publication", "plots", "SEM", "colorblind"]
+}

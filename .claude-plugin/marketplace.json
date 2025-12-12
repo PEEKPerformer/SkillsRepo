@@ -1,0 +1,30 @@
+{
+  "name": "brenden-skills",
+  "owner": {
+    "name": "BrendenSkills",
+    "email": "brendenferland@gmail.com"
+  },
+  "metadata": {
+    "description": "Custom skills and plugins for the team",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "example-skill",
+      "source": "./plugins/example-skill",
+      "description": "An example skill to demonstrate the plugin structure",
+      "version": "1.0.0",
+      "category": "examples",
+      "tags": ["example", "starter"]
+    },
+    {
+      "name": "publication-figures",
+      "source": "./plugins/publication-figures",
+      "description": "Generate publication-quality scientific figures with matplotlib. Supports scatter, line, bar, dual-axis, log-scale plots with error bars, colorbars, insets. Includes 6 colorblind-safe color palettes and optional SEM image processing.",
+      "version": "1.0.0",
+      "category": "scientific",
+      "tags": ["figures", "matplotlib", "publication", "scientific", "plots", "SEM", "colorblind-safe"]
+    }
+  ]
+}

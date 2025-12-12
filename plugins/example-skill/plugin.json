@@ -1,0 +1,9 @@
+{
+  "name": "example-skill",
+  "description": "An example skill to demonstrate the plugin structure",
+  "version": "1.0.0",
+  "author": {
+    "name": "Your Team"
+  },
+  "commands": "./commands/"
+}

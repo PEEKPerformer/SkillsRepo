@@ -1,0 +1,22 @@
+# Local Claude settings
+.claude/settings.local.json
+
+# OS files
+.DS_Store
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# Development resources (stay off GitHub)
+FIgureSKills/
+
+# Generated figure outputs
+**/output/
+**/outputs/
+
+# High-res figures (too large for git)
+# Keep previews for verification
+*.tif
+*.tiff

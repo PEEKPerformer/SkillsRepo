@@ -151,21 +151,31 @@ export_figure(fig, 'output/log_scale_example')
 
 ## Bar Chart
 
+Uses `draw_rounded_bar()` for a cleaner, modern look with uniform rounded corners.
+
 ```python
+from scripts.plot_helpers import draw_rounded_bar
+
 fig, ax = plt.subplots(figsize=(8, 6))
 
 categories = ['Control', 'Treatment A', 'Treatment B']
 values = [45, 72, 63]
 errors = [5, 8, 6]
-
 colors = [palette['neutral'], palette['primary'], palette['secondary']]
 
-bars = ax.bar(categories, values, yerr=errors,
-              color=colors, edgecolor='black', linewidth=2,
-              capsize=8, error_kw={'linewidth': 2})
-
-ax.set_ylabel('Response (units)')
+# MUST set axis limits BEFORE drawing rounded bars
+bar_positions = range(len(categories))
+ax.set_xlim(-0.5, len(categories) - 0.5)
 ax.set_ylim(0, 90)
+
+# Draw rounded bars
+for i, (val, err, color) in enumerate(zip(values, errors, colors)):
+    draw_rounded_bar(ax, i, val, width=0.6, facecolor=color, edgecolor='black', linewidth=1.5)
+    ax.errorbar(i, val, yerr=err, fmt='none', color='black', capsize=6, capthick=1.5)
+
+ax.set_xticks(bar_positions)
+ax.set_xticklabels(categories)
+ax.set_ylabel('Response (units)')
 configure_spines(ax)
 
 export_figure(fig, 'output/bar_chart_example')

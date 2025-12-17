@@ -7,6 +7,7 @@ Provides utilities for panel letters, legends, dual axes, insets, and more.
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
+from matplotlib.patches import FancyBboxPatch
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes, mark_inset
 
 
@@ -69,6 +70,60 @@ def configure_spines(ax, linewidth=2.0, visible=True):
     for spine in ['top', 'right', 'bottom', 'left']:
         ax.spines[spine].set_visible(visible)
         ax.spines[spine].set_linewidth(linewidth)
+
+
+def draw_rounded_bar(ax, x, height, width=0.6, bottom=0, rounding_size=None, **kwargs):
+    """
+    Draw a bar with visually uniform rounded corners.
+
+    Uses FancyBboxPatch with mutation_aspect to ensure corners appear
+    square regardless of different x/y data scales.
+
+    IMPORTANT: Set axis limits (ax.set_xlim/ylim) BEFORE calling this function,
+    as mutation_aspect depends on knowing the final axis ranges.
+
+    Args:
+        ax: matplotlib Axes object
+        x: bar center x position
+        height: bar height (not including bottom offset)
+        width: bar width. Default: 0.6
+        bottom: bar bottom y position. Default: 0
+        rounding_size: corner radius in x data units. Default: width * 0.1
+        **kwargs: passed to FancyBboxPatch (facecolor, edgecolor, linewidth, etc.)
+
+    Returns:
+        FancyBboxPatch object
+
+    Example:
+        ax.set_xlim(-0.5, 4.5)
+        ax.set_ylim(0, 100)
+        draw_rounded_bar(ax, 0, 75, facecolor='steelblue', edgecolor='black')
+    """
+    if rounding_size is None:
+        rounding_size = width * 0.1
+
+    # Get data and visual aspect ratios
+    xlim = ax.get_xlim()
+    ylim = ax.get_ylim()
+    x_range = xlim[1] - xlim[0]
+    y_range = ylim[1] - ylim[0]
+
+    # Get axes dimensions in display coords
+    fig = ax.figure
+    bbox = ax.get_window_extent(renderer=fig.canvas.get_renderer())
+
+    # mutation_aspect compensates for the difference between data and visual aspect
+    # This makes corner rounding appear visually square
+    mutation_aspect = (y_range / x_range) * (bbox.width / bbox.height)
+
+    box = FancyBboxPatch(
+        (x - width/2, bottom), width, height,
+        boxstyle=f'round,pad=0,rounding_size={rounding_size}',
+        mutation_aspect=mutation_aspect,
+        **kwargs
+    )
+    ax.add_patch(box)
+    return box
 
 
 def add_dual_axis(ax, ylabel, color, fontsize=22):

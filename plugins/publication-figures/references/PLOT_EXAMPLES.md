@@ -176,7 +176,8 @@ ax.set_ylim(-float_gap, 90)
 for i, (val, err, color) in enumerate(zip(values, errors, colors)):
     draw_rounded_bar(ax, i, val, width=0.6, bottom=0,
                      facecolor=color, edgecolor='black', linewidth=1.5)
-    ax.errorbar(i, val, yerr=err, fmt='none', color='black', capsize=6, capthick=1.5)
+    ax.errorbar(i, val, yerr=err, fmt='none', color='black',
+                capsize=5, capthick=1.5, linewidth=1.5)
 
 ax.set_xticks(bar_positions)
 ax.set_xticklabels(categories)

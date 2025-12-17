@@ -163,14 +163,19 @@ values = [45, 72, 63]
 errors = [5, 8, 6]
 colors = [palette['neutral'], palette['primary'], palette['secondary']]
 
+# Elevate bars off axis for cleaner look
+bar_bottom = 2
+
 # MUST set axis limits BEFORE drawing rounded bars
+# Start y-axis at bar_bottom so bars appear grounded
 bar_positions = range(len(categories))
 ax.set_xlim(-0.5, len(categories) - 0.5)
-ax.set_ylim(0, 90)
+ax.set_ylim(bar_bottom, 90)
 
-# Draw rounded bars
+# Draw rounded bars (height is value minus bottom offset)
 for i, (val, err, color) in enumerate(zip(values, errors, colors)):
-    draw_rounded_bar(ax, i, val, width=0.6, facecolor=color, edgecolor='black', linewidth=1.5)
+    draw_rounded_bar(ax, i, val - bar_bottom, width=0.6, bottom=bar_bottom,
+                     facecolor=color, edgecolor='black', linewidth=1.5)
     ax.errorbar(i, val, yerr=err, fmt='none', color='black', capsize=6, capthick=1.5)
 
 ax.set_xticks(bar_positions)

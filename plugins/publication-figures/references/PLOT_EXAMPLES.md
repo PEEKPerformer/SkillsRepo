@@ -163,24 +163,25 @@ values = [45, 72, 63]
 errors = [5, 8, 6]
 colors = [palette['neutral'], palette['primary'], palette['secondary']]
 
-# Elevate bars off axis for cleaner look
-bar_bottom = 2
+# Floating bars: extend y-axis slightly negative so bars float above x-axis
+# but y=0 is correctly at bar bottoms
+float_gap = 2
+bar_positions = range(len(categories))
 
 # MUST set axis limits BEFORE drawing rounded bars
-# Start y-axis at bar_bottom so bars appear grounded
-bar_positions = range(len(categories))
 ax.set_xlim(-0.5, len(categories) - 0.5)
-ax.set_ylim(bar_bottom, 90)
+ax.set_ylim(-float_gap, 90)
 
-# Draw rounded bars (height is value minus bottom offset)
+# Draw rounded bars
 for i, (val, err, color) in enumerate(zip(values, errors, colors)):
-    draw_rounded_bar(ax, i, val - bar_bottom, width=0.6, bottom=bar_bottom,
+    draw_rounded_bar(ax, i, val, width=0.6, bottom=0,
                      facecolor=color, edgecolor='black', linewidth=1.5)
     ax.errorbar(i, val, yerr=err, fmt='none', color='black', capsize=6, capthick=1.5)
 
 ax.set_xticks(bar_positions)
 ax.set_xticklabels(categories)
 ax.set_ylabel('Response (units)')
+ax.set_yticks([0, 20, 40, 60, 80])  # Don't show negative region
 configure_spines(ax)
 
 export_figure(fig, 'output/bar_chart_example')

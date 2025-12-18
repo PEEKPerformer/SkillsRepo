@@ -1,0 +1,9 @@
+{
+    "name": "multi_obj_test", 
+    "description": "Multi-objective test",
+    "parameters": [
+        {"name": "x", "type": "float", "bounds": [0, 100]},
+        {"name": "y", "type": "float", "bounds": [0, 100]}
+    ],
+    "objective": "strength, -cost"
+}

@@ -1,0 +1,12 @@
+{
+    "name": "agent_test",
+    "description": "Test config for agent validation",
+    "parameters": [
+        {"name": "temp", "type": "float", "bounds": [100, 200]},
+        {"name": "time", "type": "float", "bounds": [1, 10]},
+        {"name": "material", "type": "choice", "values": ["A", "B", "C"]}
+    ],
+    "objective": "strength",
+    "outcome_constraints": ["cost <= 100"],
+    "generation_strategy": {"method": "fast", "random_seed": 42}
+}

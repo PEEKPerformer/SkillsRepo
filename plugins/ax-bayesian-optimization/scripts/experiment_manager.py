@@ -80,10 +80,22 @@ def create_experiment(config_path: str, output_path: str) -> None:
                 scaling=p.get("scaling"),  # optional: "log" or "linear"
             ))
         elif p["type"] == "choice":
+            # Infer parameter_type from values, or use explicit type if provided
+            values = p["values"]
+            if p.get("value_type"):
+                param_type = p["value_type"]
+            elif all(isinstance(v, bool) for v in values):
+                param_type = "bool"
+            elif all(isinstance(v, int) for v in values):
+                param_type = "int"
+            elif all(isinstance(v, (int, float)) for v in values):
+                param_type = "float"
+            else:
+                param_type = "str"
             parameters.append(ChoiceParameterConfig(
                 name=p["name"],
-                parameter_type="str",
-                values=p["values"],
+                parameter_type=param_type,
+                values=values,
                 is_ordered=p.get("is_ordered"),  # optional: ordinal vs categorical
             ))
 
@@ -416,7 +428,7 @@ def predict(experiment_path: str, parameters: str) -> dict:
         predictions = client.predict(points=[params])
         result = {
             "parameters": params,
-            "predictions": {k: {"mean": v[0], "variance": v[1]} for k, v in predictions[0].items()}
+            "predictions": {k: {"mean": v[0], "sem": v[1]} for k, v in predictions[0].items()}
         }
         print(json.dumps(result, indent=2))
         return result

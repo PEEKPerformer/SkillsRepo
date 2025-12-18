@@ -25,6 +25,14 @@
       "version": "1.0.0",
       "category": "scientific",
       "tags": ["figures", "matplotlib", "publication", "scientific", "plots", "SEM", "colorblind-safe"]
+    },
+    {
+      "name": "ax-bayesian-optimization",
+      "source": "./plugins/ax-bayesian-optimization",
+      "description": "Bayesian optimization partner for materials science experiments using Meta Ax. Guides researchers through iterative optimization of material properties, formulations, and process parameters with full git documentation.",
+      "version": "1.0.0",
+      "category": "scientific",
+      "tags": ["bayesian", "optimization", "materials", "Ax", "experiments", "scientific"]
     }
   ]
 }

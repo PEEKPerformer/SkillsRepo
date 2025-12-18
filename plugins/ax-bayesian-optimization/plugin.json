@@ -1,0 +1,11 @@
+{
+  "name": "ax-bayesian-optimization",
+  "description": "Bayesian optimization partner for materials science experiments using Meta Ax. Guides researchers through iterative optimization with full git documentation.",
+  "version": "1.0.0",
+  "author": {
+    "name": "BrendenSkills",
+    "email": "brendenferland@gmail.com"
+  },
+  "commands": "./commands/",
+  "keywords": ["bayesian", "optimization", "materials", "Ax", "experiments", "scientific"]
+}

@@ -20,3 +20,4 @@ FIgureSKills/
 # Keep previews for verification
 *.tif
 *.tiff
+__pycache__/

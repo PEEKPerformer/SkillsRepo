@@ -1,9 +1,0 @@
-{
-    "name": "log_scale_test",
-    "description": "Log scale parameter test", 
-    "parameters": [
-        {"name": "concentration", "type": "float", "bounds": [0.001, 1000], "scaling": "log"},
-        {"name": "temp", "type": "float", "bounds": [50, 150]}
-    ],
-    "objective": "reaction_rate"
-}

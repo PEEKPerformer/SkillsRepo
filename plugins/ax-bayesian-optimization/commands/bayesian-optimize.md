@@ -71,6 +71,7 @@ python scripts/visualization.py sensitivity --experiment experiments/{name}/ --o
 
 ## Reference Files
 
+- `references/BEST_PRACTICES.md` - Critical guidance for better results (read first)
 - `references/PARAMETERS.md` - Parameter types, constraints, multi-objective
 - `references/WORKFLOW.md` - Detailed workflow steps
 - `references/EXAMPLES.md` - Composite, 3D printing, alloy examples
@@ -83,7 +84,9 @@ pip install ax-platform matplotlib numpy
 
 ## Key Principles
 
-1. **Validate before executing** - Always confirm feasibility with researcher
-2. **Document everything** - Use experiment_log.md for notes
-3. **Commit often** - Track progress in git
-4. **Read previews only** - Only read `*_preview.png` files (72 DPI)
+1. **Initial data first** - Run 5-10 trials before trusting BO suggestions (see BEST_PRACTICES.md)
+2. **Validate before executing** - Always confirm feasibility with researcher
+3. **Report uncertainty** - Use SEM format `[mean, sem]` when replicates available
+4. **Document everything** - Use experiment_log.md for notes, especially failed trials
+5. **Commit often** - Track progress in git
+6. **Read previews only** - Only read `*_preview.png` files (72 DPI)

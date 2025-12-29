@@ -1,0 +1,11 @@
+{
+  "name": "aerographix-brand",
+  "description": "Apply Aerographix brand colors, typography, and styling to artifacts. Dark-mode native design with Electric Blue and Plasma Cyan accents for a graphene-enhanced HEPA filtration startup.",
+  "version": "1.0.0",
+  "author": {
+    "name": "BrendenSkills",
+    "email": "brendenferland@gmail.com"
+  },
+  "commands": "./commands/",
+  "keywords": ["brand", "design", "aerographix", "styling", "dark-mode", "startup"]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "clear-scientific-writing",
+  "description": "Edit and improve scientific writing by eliminating vague significance-language, formulaic structures, and abstract vocabulary. Use when reviewing papers, abstracts, or technical documents for clarity and specificity.",
+  "version": "1.0.0",
+  "author": {
+    "name": "BrendenSkills",
+    "email": "brendenferland@gmail.com"
+  },
+  "commands": "./commands/",
+  "keywords": ["writing", "scientific", "editing", "clarity", "papers", "academic"]
+}

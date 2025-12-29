@@ -33,6 +33,14 @@
       "version": "1.0.0",
       "category": "scientific",
       "tags": ["bayesian", "optimization", "materials", "Ax", "experiments", "scientific"]
+    },
+    {
+      "name": "clear-scientific-writing",
+      "source": "./plugins/clear-scientific-writing",
+      "description": "Edit and improve scientific writing by eliminating vague significance-language, formulaic structures, and abstract vocabulary. Transforms generic claims into specific, substantive content.",
+      "version": "1.0.0",
+      "category": "writing",
+      "tags": ["writing", "scientific", "editing", "clarity", "papers", "academic"]
     }
   ]
 }
